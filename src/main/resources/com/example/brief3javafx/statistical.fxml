@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="568.0" prefWidth="967.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.brief3javafx.controller.Statistical">
+   <children>
+      <Label layoutX="179.0" layoutY="20.0" text="Daily Average Number of Registred Live Clients by Month" textFill="#4e498d">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <LineChart fx:id="lineChart" layoutX="53.0" layoutY="77.0" prefHeight="400.0" prefWidth="861.0" style="-fx-background-color: #459fe1, white;-fx-background-insets: 0, 2;-fx-background-radius: 5px; -fx-padding: 5px;">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <Button layoutX="77.0" layoutY="500.0" mnemonicParsing="false" onAction="#retour" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color:#459fe1; -fx-border-color: white; -fx-background-radius: 10px;" text=" Retour" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="850.0" layoutY="500.0" mnemonicParsing="false" onAction="#close" prefHeight="33.0" prefWidth="70.0" style="-fx-background-color: none; -fx-border-color: #459fe1; -fx-border-radius: 10px;" text=" Close" textFill="#459fe1">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="214.0" layoutY="500.0" mnemonicParsing="false" onAction="#addClient" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #459fe1; -fx-border-color: white; -fx-background-radius: 10px;" text="+ New client" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

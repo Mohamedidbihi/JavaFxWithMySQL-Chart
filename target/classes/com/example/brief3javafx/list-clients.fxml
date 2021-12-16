@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="568.0" prefWidth="967.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.brief3javafx.controller.ListClientsController">
+   <children>
+      <TableView fx:id="tableclients" layoutX="5.0" layoutY="145.0" prefHeight="361.0" prefWidth="957.0">
+        <columns>
+          <TableColumn fx:id="badge" prefWidth="76.0" text="N°Badge" />
+          <TableColumn fx:id="compagny" prefWidth="84.0" text="Compagny" />
+            <TableColumn fx:id="firstname" prefWidth="105.0" text="FirstName" />
+            <TableColumn fx:id="lastname" editable="false" prefWidth="88.0" text="LastName " />
+            <TableColumn prefWidth="218.0" text="Phone">
+               <columns>
+                  <TableColumn fx:id="code" prefWidth="55.0" text="Code " />
+                  <TableColumn fx:id="phone" prefWidth="87.0" text="Number" />
+               </columns>
+            </TableColumn>
+            <TableColumn fx:id="startdate" prefWidth="86.14395141601562" text="Start Date" />
+            <TableColumn fx:id="passport" prefWidth="83.5732421875" text="Passport" />
+            <TableColumn fx:id="cin" prefWidth="69.38311767578125" text="Cin" />
+            <TableColumn fx:id="email" prefWidth="103.33416748046875" text="Email" />
+            <TableColumn fx:id="adresse" prefWidth="129.66583251953125" text="Adresse" />
+        </columns>
+      </TableView>
+      <Button layoutX="875.0" layoutY="517.0" mnemonicParsing="false" onAction="#buttonClose" prefHeight="33.0" prefWidth="70.0" style="-fx-background-color: none; -fx-border-color: #459fe1; -fx-border-radius: 10px;" text=" Close" textFill="#459fe1">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Pane layoutX="12.0" layoutY="63.0" prefHeight="64.0" prefWidth="945.0" style="-fx-background-radius: 10px; -fx-border-radius: 10px; -fx-background-color: #fafbff;">
+         <children>
+            <TextField fx:id="inputFiltre" layoutX="7.0" layoutY="13.0" prefHeight="39.0" prefWidth="675.0" promptText="        Search by Cin, Passport, Firstname, Lastname or Email" style="-fx-background-radius: 10px; -fx-border-radius: 10px;" />
+            <Button fx:id="filtre" layoutX="695.0" layoutY="16.0" mnemonicParsing="false" onAction="#onFiltre" prefHeight="31.0" prefWidth="117.0" style="-fx-background-color: white; -fx-border-color: #459fe1; -fx-background-radius: 30px; -fx-border-radius: 30px;" text="Filters" textFill="#459fe1">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="824.0" layoutY="21.0" mnemonicParsing="false" onAction="#buttonNewClient" style="-fx-background-color: #459fe1; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="+ New client" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+      </Pane>
+      <Label layoutX="25.0" layoutY="25.0" text="Client list : " textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="464.0" layoutY="518.0" mnemonicParsing="false" onAction="#buttonStatistic" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #459fe1; -fx-border-color: white; -fx-background-radius: 10px;" text=" Statistical" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

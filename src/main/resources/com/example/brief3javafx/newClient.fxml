@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="967.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.brief3javafx.controller.NewClientController">
+    <children>
+        <Label layoutX="262.0" layoutY="17.0" text=" New client" textAlignment="CENTER" textFill="#459fe1">
+            <font>
+                <Font name="System Bold Italic" size="24.0" />
+            </font>
+        </Label>
+        <Label layoutX="285.0" layoutY="70.0" text="Badge number*">
+            <font>
+                <Font name="System Italic" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="286.0" layoutY="142.0" text="Compagny*">
+            <font>
+                <Font name="System Italic" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="285.0" layoutY="214.0" text="Start date*">
+            <font>
+                <Font name="System Italic" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="632.0" layoutY="70.0" text="First name*">
+            <font>
+                <Font name="System Italic" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="632.0" layoutY="142.0" text="Last name*">
+            <font>
+                <Font name="System Italic" size="14.0" />
+            </font>
+        </Label>
+        <DatePicker fx:id="date" focusTraversable="false" layoutX="285.0" layoutY="238.0" prefHeight="31.0" prefWidth="244.0" />
+        <TextField fx:id="badge" alignment="CENTER" focusTraversable="false" layoutX="285.0" layoutY="94.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="244.0">
+         <font>
+            <Font size="19.0" />
+         </font></TextField>
+        <Label layoutX="286.0" layoutY="288.0" text="Adress*">
+            <font>
+                <Font name="System Italic" size="14.0" />
+            </font>
+        </Label>
+        <TextArea fx:id="adress" focusTraversable="false" layoutX="285.0" layoutY="309.0" prefHeight="148.0" prefWidth="252.0">
+         <font>
+            <Font size="19.0" />
+         </font></TextArea>
+        <RadioButton layoutX="707.0" layoutY="391.0" mnemonicParsing="false" onAction="#radioButtonPass" selected="true" text="PASSPORT">
+            <font>
+                <Font name="System Bold Italic" size="12.0" />
+            </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="choose" />
+         </toggleGroup>
+        </RadioButton>
+        <Label layoutX="634.0" layoutY="390.0" text="Choose*">
+            <font>
+                <Font name="System Italic" size="14.0" />
+            </font>
+        </Label>
+        <RadioButton layoutX="825.0" layoutY="391.0" mnemonicParsing="false" onAction="#radioButtonCin" text="CIN" toggleGroup="$choose">
+            <font>
+                <Font name="System Bold Italic" size="12.0" />
+            </font>
+        </RadioButton>
+        <Button fx:id="add" defaultButton="true" layoutX="688.0" layoutY="491.0" mnemonicParsing="false" onAction="#addClients" prefHeight="30.0" prefWidth="123.0" style="-fx-background-color: #459fe1; -fx-background-radius: 30px;" text="Add +" textFill="WHITE">
+            <effect>
+                <ColorAdjust />
+            </effect>
+            <font>
+                <Font name="System Bold Italic" size="14.0" />
+            </font>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+        </Button>
+        <Button layoutX="797.0" layoutY="491.0" mnemonicParsing="false" onAction="#clear" prefHeight="30.0" prefWidth="147.0" style="-fx-background-color: none; -fx-border-radius: 30px;" text="Reset All" textFill="#459fe1">
+            <effect>
+                <ColorAdjust />
+            </effect>
+            <font>
+                <Font name="System Italic" size="14.0" />
+            </font>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+        </Button>
+        <Label layoutX="633.0" layoutY="219.0" text="Phone*">
+            <font>
+                <Font name="System Italic" size="14.0" />
+            </font>
+        </Label>
+        <ComboBox fx:id="dropdown" layoutX="633.0" layoutY="241.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="93.0" promptText="Select" />
+        <TextField fx:id="number" focusTraversable="false" layoutX="719.0" layoutY="241.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="160.0">
+            <opaqueInsets>
+                <Insets left="-1.0" />
+            </opaqueInsets>
+         <font>
+            <Font size="19.0" />
+         </font>
+        </TextField>
+        <TextField fx:id="firstName" alignment="CENTER" focusTraversable="false" layoutX="632.0" layoutY="94.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="244.0">
+         <font>
+            <Font size="19.0" />
+         </font></TextField>
+        <TextField fx:id="compagny" alignment="CENTER" focusTraversable="false" layoutX="286.0" layoutY="166.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="244.0">
+         <font>
+            <Font size="19.0" />
+         </font></TextField>
+        <TextField fx:id="lastname" alignment="CENTER" focusTraversable="false" layoutX="633.0" layoutY="166.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="244.0">
+         <font>
+            <Font size="19.0" />
+         </font></TextField>
+        <Label layoutX="635.0" layoutY="294.0" text="Email*">
+            <font>
+                <Font name="System Italic" size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="email" alignment="CENTER" focusTraversable="false" layoutX="636.0" layoutY="318.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="244.0">
+         <font>
+            <Font size="19.0" />
+         </font></TextField>
+        <Button layoutX="243.0" layoutY="487.0" mnemonicParsing="false" onAction="#buttonListClients" prefHeight="33.0" prefWidth="117.0" style="-fx-background-color: #ffffff; -fx-border-color: #459fe1; -fx-border-radius: 30px; -fx-background-radius: 30px;" text="List clients" textFill="#459fe1">
+            <effect>
+                <ColorAdjust />
+            </effect>
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+        </Button>
+      <TextField fx:id="cin" alignment="CENTER" layoutX="635.0" layoutY="424.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="244.0" promptText="CIN" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="passport" alignment="CENTER" focusTraversable="false" layoutX="634.0" layoutY="424.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="244.0" promptText="PASSPORT">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <Label fx:id="regexBadge" layoutX="454.0" layoutY="126.0" text="10 charactères*" textFill="RED" visible="false">
+         <font>
+            <Font name="System Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="regexCompagny" layoutX="434.0" layoutY="200.0" text="Max50 charactères*" textFill="RED" visible="false">
+         <font>
+            <Font name="System Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="regexDate" layoutX="479.0" layoutY="273.0" text="Required*" textFill="RED" visible="false">
+         <font>
+            <Font name="System Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="regexAdress" layoutX="486.0" layoutY="461.0" text="Required*" textFill="RED" visible="false">
+         <font>
+            <Font name="System Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="regexFirstName" layoutX="779.0" layoutY="130.0" text="Max50 charactères*" textFill="RED" visible="false">
+         <font>
+            <Font name="System Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="regexLastName" layoutX="781.0" layoutY="200.0" text="Max50 charactères*" textFill="RED" visible="false">
+         <font>
+            <Font name="System Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="regexPhone" layoutX="801.0" layoutY="276.0" text="Format Invalid*" textFill="RED" visible="false">
+         <font>
+            <Font name="System Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="regexEmail" layoutX="779.0" layoutY="350.0" text="Format email invalid*" textFill="RED" visible="false">
+         <font>
+            <Font name="System Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="regexPassport" layoutX="801.0" layoutY="460.0" text="Format Invalid*" textFill="RED" visible="false">
+         <font>
+            <Font name="System Italic" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="Succes" layoutX="474.0" layoutY="469.0" prefHeight="68.0" prefWidth="180.0" text="Client added successfully" textFill="#42ba96" visible="false">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutY="-1.0" prefHeight="569.0" prefWidth="224.0" style="-fx-background-color: #459fe1;">
+         <children>
+            <ImageView fitHeight="124.0" fitWidth="200.0" layoutX="19.0" layoutY="444.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/pngkit_life-insurance-icon-png_2592256.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Line endX="100.0" fill="#459fe1" layoutX="348.0" layoutY="53.0" startX="-100.0" stroke="#459fe1" strokeMiterLimit="19.0" strokeWidth="3.0">
+         <cursor>
+            <Cursor fx:constant="W_RESIZE" />
+         </cursor>
+      </Line>
+    </children>
+</AnchorPane>
