@@ -22,7 +22,6 @@ public class Connexion {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mutuellecentr", "root", "admin");
-            System.out.println("Connection Established Successfully :) ");
         } catch (ClassNotFoundException exception) {
             System.out.println("Connection to database has a problem :( " + exception.getMessage());
         }

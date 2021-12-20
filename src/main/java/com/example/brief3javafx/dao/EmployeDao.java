@@ -9,11 +9,9 @@ import java.sql.SQLException;
 
 public class EmployeDao {
 
-
     public boolean login(String email, String password) throws SQLException {
 
         Connection connection = null;
-
         PreparedStatement statement = null;
         try {
             connection = Connexion.getConnection();

@@ -15,11 +15,14 @@ import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
+
 
 public class NewClientController {
     @FXML
     private Label regexEmail;
+
+    @FXML
+    private Label Failed;
 
     @FXML
     private Label regexDate;
@@ -92,13 +95,6 @@ public class NewClientController {
     @FXML
     public void initialize() throws ParseException {
         new NumberImpl().addDropDown(dropdown);
-        date.setDayCellFactory(param -> new DateCell() {
-            @Override
-            public void updateItem(LocalDate date, boolean empty) {
-                super.updateItem(date, empty);
-                setDisable(empty || date.compareTo(LocalDate.now()) > 0 );
-            }
-        });
     }
 
     private boolean isEmail(String input){
@@ -207,9 +203,18 @@ if(res){
     Client c = new ClientImpl().addClient(badge.getText(),compagny.getText(), firstName.getText(),lastname.getText(),adress.getText(),date.getValue(),email.getText(),number.getText(),dropdown.getSelectionModel().getSelectedItem(),cinClt,passportClt);
    // NouveauxClients.AjoutClient(c);
     ClientDao cn=new ClientDao();
-    cn.ajouterClient(c);
-    Succes.setVisible(true);
-    clearInputs();
+    boolean t = cn.ajouterClient(c);
+    if(t)
+    {
+        Failed.setVisible(true);
+        Succes.setVisible(true);
+        clearInputs();
+    }
+    else{
+        Failed.setVisible(true);
+        Succes.setVisible(false);
+    }
+
       }
     }
 }

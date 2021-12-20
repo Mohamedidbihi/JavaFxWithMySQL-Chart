@@ -3,36 +3,57 @@ package com.example.brief3javafx.dao;
 
 import com.example.brief3javafx.dbConnexion.Connexion;
 import com.example.brief3javafx.models.Client;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
+import javafx.application.Platform;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 
+
 public  class ClientDao   {
 
-    public Client ajouterClient(Client c) throws SQLException {
+    public boolean ajouterClient(Client c) throws SQLException {
         Connection connection = null;
         PreparedStatement statement = null;
         try {
             connection = Connexion.getConnection();
-            String query_POST = "INSERT INTO mutuellecentr.client(numBadge,compagny,startWork,firstName,lastName,cin,Passport,countryCode,phone,email,adress)VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
-            statement = connection.prepareStatement(query_POST, PreparedStatement.RETURN_GENERATED_KEYS);
-            statement.setString(1, c.getBadge());
-            statement.setString(2, c.getCompagny());
-            statement.setDate(3,Date.valueOf(c.getStartDate()));
-            statement.setString(4, c.getFirstName());
-            statement.setString(5, c.getLastName());
-            statement.setString(6, c.getCin());
-            statement.setString(7, c.getPassport());
-            statement.setString(8, c.getCountryCode());
-            statement.setString(9, c.getPhone());
-            statement.setString(10, c.getEmail());
-            statement.setString(11, c.getAdress());
-            statement.executeUpdate();
+            String query_CHECK = "SELECT * from client where cin = ? or passport = ? or numBadge = ?";
+            statement = connection.prepareStatement(query_CHECK);
+            statement.setString(1, c.getCin());
+            statement.setString(2, c.getPassport());
+            statement.setString(3, c.getBadge());
+            ResultSet rs = statement.executeQuery();
+            System.out.println(rs);
+            if(rs.next())
+            {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Alerte");
+                alert.setHeaderText("Attention !!:");
+                alert.setContentText("Utulisateur deja existe !!");
+                alert.showAndWait();
+                return false;
+            }
+            else {
+                String query_POST = "INSERT INTO mutuellecentr.client(numBadge,compagny,startWork,firstName,lastName,cin,Passport,countryCode,phone,email,adress)VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+                statement = connection.prepareStatement(query_POST, PreparedStatement.RETURN_GENERATED_KEYS);
+                statement.setString(1, c.getBadge());
+                statement.setString(2, c.getCompagny());
+                statement.setDate(3, Date.valueOf(c.getStartDate()));
+                statement.setString(4, c.getFirstName());
+                statement.setString(5, c.getLastName());
+                statement.setString(6, c.getCin());
+                statement.setString(7, c.getPassport());
+                statement.setString(8, c.getCountryCode());
+                statement.setString(9, c.getPhone());
+                statement.setString(10, c.getEmail());
+                statement.setString(11, c.getAdress());
+                statement.executeUpdate();
+                return true;
+            }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         } finally {
@@ -43,8 +64,9 @@ public  class ClientDao   {
                 statement.close();
             }
         }
-        return c;
+        return false;
     }
+
     public List<Client> AfficherClients() throws SQLException{
         List<Client> clients = new ArrayList<Client>();
         Connection connection = null;
@@ -122,6 +144,7 @@ public  class ClientDao   {
     }
     public XYChart.Series Statistiques()
     {
+
         XYChart.Series series = new XYChart.Series();
         Connection connection = null;
         PreparedStatement statement = null;
@@ -133,6 +156,10 @@ public  class ClientDao   {
             while(rs.next()){
                 series.getData().add(new XYChart.Data(rs.getString(1),rs.getDouble(3)));
             }
+            Platform.runLater(()
+                    -> {
+                series.getNode().lookup(".chart-series-line").setStyle("-fx-stroke:#459fe1;");
+            });
         }catch(Exception e){
             System.out.println("Error on DB connection");
         }
