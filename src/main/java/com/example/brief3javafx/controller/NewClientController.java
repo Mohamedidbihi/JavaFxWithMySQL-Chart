@@ -2,7 +2,9 @@ package com.example.brief3javafx.controller;
 import com.example.brief3javafx.Implements.ClientImpl;
 import com.example.brief3javafx.Implements.NumberImpl;
 import com.example.brief3javafx.Main;
-import com.example.brief3javafx.dao.ClientDao;
+import com.example.brief3javafx.dbConnexion.dao.ClientDao;
+import com.example.brief3javafx.enums.enumRegex;
+import com.example.brief3javafx.helpers.Regex;
 import com.example.brief3javafx.models.Client;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -97,29 +99,6 @@ public class NewClientController {
         new NumberImpl().addDropDown(dropdown);
     }
 
-    private boolean isEmail(String input){
-        return  input.matches("[a-zA-Z0-9_.]+@[a-zA-Z0-9]+.[a-zA-Z]{2,3}[.] {0,1}[a-zA-Z]{2,3}+");
-    }
-    private boolean max50(String input){
-       if(input.length()>50) {
-           return  true;
-       }
-       else {
-           return  false;
-       }
-    }
-    private boolean tenChar(String input){
-        if(input.length()==10) {
-            return  false;
-        }
-        else {
-            return  true;
-        }
-    }
-
-    private boolean isPhone(String input){
-        return  input.matches( "^[0-9]{9}$");
-    }
 
 
     public void clearInputs(){
@@ -156,65 +135,103 @@ public class NewClientController {
     }
     @FXML
     void addClients(ActionEvent event) throws SQLException {
-        boolean res= true;
+        String cinClt = cin.getText();
+        String passportClt = passport.getText();
 
-     if(!isPhone(number.getText())) {
-         regexPhone.setVisible(true);
-         res=false;
-     }
-     else{
-         regexPhone.setVisible(false);
-     }
-     if(!isEmail(email.getText())){
-        regexEmail.setVisible(true);
-         res=false;
-     }
-     else{
-         regexEmail.setVisible(false);
-     }
-     
-     if(!tenChar(badge.getText())){
-         regexBadge.setVisible(true);
-         res=false;
-     }
-     else{
-         regexBadge.setVisible(false);
-     }
-        if(max50(firstName.getText())){
+        boolean firstnameRegex = Regex.matchesRegex(firstName.getText(), enumRegex.NAME.getPattern());
+        boolean lastnameRegex = Regex.matchesRegex(lastname.getText(), enumRegex.NAME.getPattern());
+        boolean emailRegex = Regex.matchesRegex(email.getText(), enumRegex.EMAIL.getPattern());
+        boolean companyRegex = Regex.matchesRegex(compagny.getText(), enumRegex.COMPANY.getPattern());
+        boolean badgeRegex = Regex.matchesRegex(badge.getText(), enumRegex.BADGE.getPattern());
+        boolean phoneRegex = Regex.matchesRegex(number.getText(), enumRegex.PHONE.getPattern());
+        boolean addressRegex = Regex.matchesRegex(adress.getText(), enumRegex.ADDRESS.getPattern());
+        boolean cinRegex = Regex.matchesRegex(cin.getText(), enumRegex.CIN.getPattern());
+        boolean passRegex = Regex.matchesRegex(passport.getText(), enumRegex.PASSPORT.getPattern());
+
+        if (firstnameRegex){
+            regexFirstName.setVisible(false);
+        }else{
             regexFirstName.setVisible(true);
-            res=false;
         }
-        if(max50(lastname.getText())){
+
+        if (lastnameRegex){
+            regexLastName.setVisible(false);
+        }else{
             regexLastName.setVisible(true);
-            res=false;
         }
-if(res){
-    String cinClt = cin.getText();
-    String passportClt = passport.getText();
+        if (emailRegex){
+            regexEmail.setVisible(false);
+        }else{
+            regexEmail.setVisible(true);
+        }
 
-    if (cinClt.isEmpty()){
-        cinClt = null;
-    }
+        if (companyRegex){
+            regexCompagny.setVisible(false);
+        }else{
+            regexCompagny.setVisible(true);
+        }
+        if (badgeRegex){
+            regexBadge.setVisible(false);
+        }else{
+            regexBadge.setVisible(true);
+        }
+        if (phoneRegex){
+            regexPhone.setVisible(false);
+        }else{
+            regexPhone.setVisible(true);
+        }
+        if (addressRegex){
+            regexAdress.setVisible(false);
+        }else{
+            regexAdress.setVisible(true);
+        }
+        if (firstnameRegex){
+            regexFirstName.setVisible(false);
+        }else{
+            regexFirstName.setVisible(true);
+        }
+        if(cinRegex || passRegex){
+            regexPassport.setVisible(false);
+        }else{
+            regexPassport.setVisible(true);
+        }
+        if(!dropdown.getSelectionModel().isEmpty())
+        {
+            regexPhone.setVisible(false);
+        }else{
+            regexPhone.setVisible(true);
+        }
+        if(date.getValue()!=null){
+            regexDate.setVisible(false);
+        }else{
+            regexDate.setVisible(true);
+        }
 
-    if (passportClt.isEmpty()){
-        passportClt = null;
-    }
 
-    Client c = new ClientImpl().addClient(badge.getText(),compagny.getText(), firstName.getText(),lastname.getText(),adress.getText(),date.getValue(),email.getText(),number.getText(),dropdown.getSelectionModel().getSelectedItem(),cinClt,passportClt);
-   // NouveauxClients.AjoutClient(c);
-    ClientDao cn=new ClientDao();
-    boolean t = cn.ajouterClient(c);
-    if(t)
-    {
-        Failed.setVisible(true);
-        Succes.setVisible(true);
-        clearInputs();
-    }
-    else{
-        Failed.setVisible(true);
-        Succes.setVisible(false);
-    }
+        if (firstnameRegex && lastnameRegex && emailRegex && companyRegex && badgeRegex && phoneRegex && addressRegex && (cinRegex || passRegex) && (!dropdown.getSelectionModel().isEmpty()) && (date.getValue() != null)){
 
-      }
+            if (cinClt.isEmpty()){
+                cinClt = null;
+            }
+
+            if (passportClt.isEmpty()){
+                passportClt = null;
+            }
+
+            Client c = new ClientImpl().addClient(badge.getText(),compagny.getText(), firstName.getText(),lastname.getText(),adress.getText(),date.getValue(),email.getText(),number.getText(),dropdown.getSelectionModel().getSelectedItem(),cinClt,passportClt);
+            // NouveauxClients.AjoutClient(c);
+            ClientDao cn=new ClientDao();
+            boolean t = cn.ajouterClient(c);
+            if(t)
+            {
+                Failed.setVisible(false);
+                Succes.setVisible(true);
+                clearInputs();
+            }
+            else{
+                Failed.setVisible(true);
+                Succes.setVisible(false);
+            }
+        }
     }
 }

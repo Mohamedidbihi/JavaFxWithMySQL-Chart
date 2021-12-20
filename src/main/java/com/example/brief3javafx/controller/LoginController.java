@@ -1,6 +1,8 @@
 package com.example.brief3javafx.controller;
 import com.example.brief3javafx.Main;
-import com.example.brief3javafx.dao.EmployeDao;
+import com.example.brief3javafx.dbConnexion.dao.EmployeDao;
+import com.example.brief3javafx.enums.enumRegex;
+import com.example.brief3javafx.helpers.Regex;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,16 +36,13 @@ public class LoginController {
     @FXML
     private void clickLogin(ActionEvent event) throws SQLException {
         EmployeDao cd = new EmployeDao();
-        boolean emailValide;
+        boolean emailRegex = Regex.matchesRegex(email.getText(), enumRegex.EMAIL.getPattern());
         boolean passwordValide;
-        if(isEmail(email.getText())){
+        if(emailRegex){
             emailalert.setVisible(false);
-            emailValide=true;
         }
         else{
             emailalert.setVisible(true);
-            emailValide=false;
-
         }
          if(password.getText().trim().isEmpty()){
             passwordalert.setVisible(true);
@@ -53,7 +52,7 @@ public class LoginController {
              passwordValide=true;
         }
        // boolean res = new EmployeeImpl().logged(email.getText(),password.getText());
-        if(passwordValide  && emailValide  ) {
+        if(passwordValide  && emailRegex  ) {
             boolean res = cd.login(email.getText(), password.getText());
             if (res) {
                 try {
@@ -74,11 +73,4 @@ public class LoginController {
             }
         }
     }
-
-    private boolean isEmail(String input){
-        return  input.matches("[a-zA-Z0-9_.]+@[a-zA-Z0-9]+.[a-zA-Z]{2,3}[.] {0,1}[a-zA-Z]{2,3}+");
-    }
-
-
-
 }

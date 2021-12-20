@@ -1,4 +1,4 @@
-package com.example.brief3javafx.dao;
+package com.example.brief3javafx.dbConnexion.dao;
 
 
 import com.example.brief3javafx.dbConnexion.Connexion;

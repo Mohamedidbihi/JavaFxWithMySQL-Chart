@@ -1,7 +1,7 @@
 package com.example.brief3javafx.controller;
 
 import com.example.brief3javafx.Main;
-import com.example.brief3javafx.dao.ClientDao;
+import com.example.brief3javafx.dbConnexion.dao.ClientDao;
 import com.example.brief3javafx.models.Client;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;

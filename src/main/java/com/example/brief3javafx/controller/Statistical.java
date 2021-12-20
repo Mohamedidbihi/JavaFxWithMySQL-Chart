@@ -1,19 +1,16 @@
 package com.example.brief3javafx.controller;
 
 import com.example.brief3javafx.Main;
-import com.example.brief3javafx.dao.ClientDao;
-import javafx.application.Platform;
+import com.example.brief3javafx.dbConnexion.dao.ClientDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
-import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Set;
 
 
 public class Statistical {
