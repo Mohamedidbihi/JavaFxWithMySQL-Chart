@@ -1,6 +1,8 @@
 <component name="libraryTable">
   <library name="javafx-sdk-17.0">
-    <CLASSES />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/javax.mail.jar!/" />
+    </CLASSES>
     <JAVADOC />
     <SOURCES>
       <root url="file://$USER_HOME$/Downloads/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1" />
