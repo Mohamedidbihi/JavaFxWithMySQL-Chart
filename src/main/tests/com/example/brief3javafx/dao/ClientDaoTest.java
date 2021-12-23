@@ -1,7 +1,6 @@
 package com.example.brief3javafx.dao;
 
 import com.example.brief3javafx.Implements.ClientImpl;
-import com.example.brief3javafx.dbConnexion.dao.ClientDao;
 import com.example.brief3javafx.models.Client;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;

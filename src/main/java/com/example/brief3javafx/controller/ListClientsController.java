@@ -1,7 +1,7 @@
 package com.example.brief3javafx.controller;
 
 import com.example.brief3javafx.Main;
-import com.example.brief3javafx.dbConnexion.dao.ClientDao;
+import com.example.brief3javafx.dao.ClientDao;
 import com.example.brief3javafx.models.Client;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -17,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -66,7 +67,7 @@ public class ListClientsController {
 
     ClientDao cd = new ClientDao();
 
-
+    final static Logger log = Logger.getLogger(ListClientsController.class.getName());
     public void initialize() throws SQLException {
 
         ObservableList<Client> lists = FXCollections.observableList(cd.AfficherClients());
@@ -98,6 +99,7 @@ public class ListClientsController {
         }
         catch (IOException e) {
             e.printStackTrace();
+            log.error("Erreur de ajouter ouneau client");
         }
     }
 
@@ -124,6 +126,7 @@ public class ListClientsController {
         }
         catch (IOException e) {
             e.printStackTrace();
+            log.error("Erreur de passer a l interface statistique");
         }
 
     }

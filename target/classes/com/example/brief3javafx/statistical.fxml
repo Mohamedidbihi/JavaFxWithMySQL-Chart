@@ -2,6 +2,8 @@
 
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -13,7 +15,7 @@
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <LineChart fx:id="lineChart" layoutX="53.0" layoutY="77.0" prefHeight="400.0" prefWidth="861.0" style="-fx-background-color: #459fe1, white;-fx-background-insets: 0, 2;-fx-background-radius: 5px; -fx-padding: 5px;">
+      <LineChart fx:id="lineChart" layoutX="53.0" layoutY="77.0" prefHeight="400.0" prefWidth="861.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -21,7 +23,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <Button layoutX="77.0" layoutY="500.0" mnemonicParsing="false" onAction="#retour" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color:#459fe1; -fx-border-color: white; -fx-background-radius: 10px;" text=" Retour" textFill="WHITE">
+      <Button layoutX="77.0" layoutY="500.0" mnemonicParsing="false" onAction="#retour" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #459fe1; -fx-border-color: white; -fx-background-radius: 10px;" text=" Retour" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

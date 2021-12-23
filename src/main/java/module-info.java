@@ -3,6 +3,8 @@ module com.example.brief3javafx {
     requires javafx.fxml;
     requires json.simple;
     requires java.sql;
+    requires java.mail;
+    requires apache.log4j.extras;
 
     opens com.example.brief3javafx to javafx.fxml;
     exports com.example.brief3javafx;

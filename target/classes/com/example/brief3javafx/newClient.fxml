@@ -46,7 +46,7 @@
         <DatePicker fx:id="date" focusTraversable="false" layoutX="285.0" layoutY="238.0" prefHeight="31.0" prefWidth="244.0" />
         <TextField fx:id="badge" alignment="CENTER" focusTraversable="false" layoutX="285.0" layoutY="94.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="244.0">
          <font>
-            <Font size="19.0" />
+            <Font size="12.0" />
          </font></TextField>
         <Label layoutX="286.0" layoutY="288.0" text="Adress*">
             <font>
@@ -55,7 +55,7 @@
         </Label>
         <TextArea fx:id="adress" focusTraversable="false" layoutX="285.0" layoutY="309.0" prefHeight="148.0" prefWidth="252.0">
          <font>
-            <Font size="19.0" />
+            <Font size="12.0" />
          </font></TextArea>
         <RadioButton layoutX="707.0" layoutY="391.0" mnemonicParsing="false" onAction="#radioButtonPass" selected="true" text="PASSPORT">
             <font>
@@ -114,20 +114,20 @@
                 <Insets left="-1.0" />
             </opaqueInsets>
          <font>
-            <Font size="19.0" />
+            <Font size="12.0" />
          </font>
         </TextField>
         <TextField fx:id="firstName" alignment="CENTER" focusTraversable="false" layoutX="632.0" layoutY="94.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="244.0">
          <font>
-            <Font size="19.0" />
+            <Font size="12.0" />
          </font></TextField>
         <TextField fx:id="compagny" alignment="CENTER" focusTraversable="false" layoutX="286.0" layoutY="166.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="244.0">
          <font>
-            <Font size="19.0" />
+            <Font size="12.0" />
          </font></TextField>
         <TextField fx:id="lastname" alignment="CENTER" focusTraversable="false" layoutX="633.0" layoutY="166.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="244.0">
          <font>
-            <Font size="19.0" />
+            <Font size="12.0" />
          </font></TextField>
         <Label layoutX="635.0" layoutY="294.0" text="Email*">
             <font>
@@ -136,7 +136,7 @@
         </Label>
         <TextField fx:id="email" alignment="CENTER" focusTraversable="false" layoutX="636.0" layoutY="318.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="244.0">
          <font>
-            <Font size="19.0" />
+            <Font size="12.0" />
          </font></TextField>
         <Button layoutX="243.0" layoutY="487.0" mnemonicParsing="false" onAction="#buttonListClients" prefHeight="33.0" prefWidth="117.0" style="-fx-background-color: #ffffff; -fx-border-color: #459fe1; -fx-border-radius: 30px; -fx-background-radius: 30px;" text="List clients" textFill="#459fe1">
             <effect>
@@ -158,7 +158,7 @@
          </font></TextField>
       <TextField fx:id="passport" alignment="CENTER" focusTraversable="false" layoutX="634.0" layoutY="424.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="244.0" promptText="PASSPORT">
          <font>
-            <Font size="14.0" />
+            <Font size="12.0" />
          </font></TextField>
       <Label fx:id="regexBadge" layoutX="454.0" layoutY="126.0" text="10 charactères*" textFill="RED" visible="false">
          <font>

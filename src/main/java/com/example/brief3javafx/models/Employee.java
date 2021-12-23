@@ -1,13 +1,22 @@
 package com.example.brief3javafx.models;
 
 public class Employee {
-  private String firstname;
-  private String lastname;
-  private String cin;
-  private int  phone;
-  private String email;
-  private String password;
-  private String entity;
+
+    private int id;
+    private String firstname;
+    private String lastname;
+    private String cin;
+    private String  phone;
+    private String email;
+    private String password;
+    private String entity;
+
+    public int getId(){
+        return id;
+    }
+    public void setId(int Id) {
+        this.id = Id;
+    }
 
     public String getFirstname() {
         return firstname;
@@ -33,11 +42,11 @@ public class Employee {
         this.cin = cin;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

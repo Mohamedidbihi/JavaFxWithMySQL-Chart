@@ -1,6 +1,7 @@
 package com.example.brief3javafx.controller;
+
 import com.example.brief3javafx.Main;
-import com.example.brief3javafx.dbConnexion.dao.EmployeDao;
+import com.example.brief3javafx.dao.EmployeDao;
 import com.example.brief3javafx.enums.enumRegex;
 import com.example.brief3javafx.helpers.Regex;
 import javafx.event.ActionEvent;
@@ -8,13 +9,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
+import org.apache.log4j.Logger;
 
 public class LoginController {
 
@@ -32,6 +35,8 @@ public class LoginController {
 
     @FXML
     private Pane invalide;
+
+   final static Logger log = Logger.getLogger(LoginController.class.getName());
 
     @FXML
     private void clickLogin(ActionEvent event) throws SQLException {
@@ -67,9 +72,11 @@ public class LoginController {
                     ((Node) (event.getSource())).getScene().getWindow().hide();
                 } catch (IOException e) {
                     e.printStackTrace();
+                    log.warn("erreur de passer a autre interface");
                 }
             } else {
                 invalide.setVisible(true);
+                log.warn("Les donneés sont incorrect auth "+email.getText()+"");
             }
         }
     }

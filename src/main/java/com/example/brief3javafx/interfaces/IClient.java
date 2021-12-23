@@ -8,5 +8,4 @@ import java.time.LocalDate;
 public interface IClient {
     public Client addClient(String badge, String compagny, String firstName, String lastName, String adress, LocalDate startDate, String email, String phone, String countryCode, String cin, String passport);
 
-
 }

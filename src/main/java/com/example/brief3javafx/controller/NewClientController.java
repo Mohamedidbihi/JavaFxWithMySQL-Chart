@@ -2,10 +2,11 @@ package com.example.brief3javafx.controller;
 import com.example.brief3javafx.Implements.ClientImpl;
 import com.example.brief3javafx.Implements.NumberImpl;
 import com.example.brief3javafx.Main;
-import com.example.brief3javafx.dbConnexion.dao.ClientDao;
+import com.example.brief3javafx.dao.ClientDao;
 import com.example.brief3javafx.enums.enumRegex;
 import com.example.brief3javafx.helpers.Regex;
 import com.example.brief3javafx.models.Client;
+import com.example.brief3javafx.sendMail.JavaMail;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,13 +14,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import org.apache.log4j.Logger;
 import org.json.simple.parser.ParseException;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
 import java.sql.SQLException;
 
 
 public class NewClientController {
+
+    final static Logger log = Logger.getLogger(NewClientController.class.getName());
     @FXML
     private Label regexEmail;
 
@@ -99,8 +104,6 @@ public class NewClientController {
         new NumberImpl().addDropDown(dropdown);
     }
 
-
-
     public void clearInputs(){
         badge.clear();
         cin.clear();
@@ -134,10 +137,10 @@ public class NewClientController {
         }
     }
     @FXML
-    void addClients(ActionEvent event) throws SQLException {
+    void addClients(ActionEvent event) throws SQLException, MessagingException {
+
         String cinClt = cin.getText();
         String passportClt = passport.getText();
-
         boolean firstnameRegex = Regex.matchesRegex(firstName.getText(), enumRegex.NAME.getPattern());
         boolean lastnameRegex = Regex.matchesRegex(lastname.getText(), enumRegex.NAME.getPattern());
         boolean emailRegex = Regex.matchesRegex(email.getText(), enumRegex.EMAIL.getPattern());
@@ -195,7 +198,7 @@ public class NewClientController {
         }else{
             regexPassport.setVisible(true);
         }
-        if(!dropdown.getSelectionModel().isEmpty())
+        if(!dropdown.getSelectionModel().isEmpty() || phoneRegex)
         {
             regexPhone.setVisible(false);
         }else{
@@ -206,7 +209,6 @@ public class NewClientController {
         }else{
             regexDate.setVisible(true);
         }
-
 
         if (firstnameRegex && lastnameRegex && emailRegex && companyRegex && badgeRegex && phoneRegex && addressRegex && (cinRegex || passRegex) && (!dropdown.getSelectionModel().isEmpty()) && (date.getValue() != null)){
 
@@ -224,6 +226,7 @@ public class NewClientController {
             boolean t = cn.ajouterClient(c);
             if(t)
             {
+                JavaMail.sendMail(c);
                 Failed.setVisible(false);
                 Succes.setVisible(true);
                 clearInputs();
