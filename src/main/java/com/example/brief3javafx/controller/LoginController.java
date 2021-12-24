@@ -17,6 +17,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+
 import org.apache.log4j.Logger;
 
 public class LoginController {
@@ -76,6 +79,9 @@ public class LoginController {
                 }
             } else {
                 invalide.setVisible(true);
+                CompletableFuture.delayedExecutor(3, TimeUnit.SECONDS).execute(() -> {
+                    invalide.setVisible(false);
+                });
                 log.warn("Les donneés sont incorrect auth "+email.getText()+"");
             }
         }

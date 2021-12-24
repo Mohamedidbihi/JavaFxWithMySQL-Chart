@@ -20,6 +20,8 @@ import org.json.simple.parser.ParseException;
 import javax.mail.MessagingException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 
 public class NewClientController {
@@ -198,7 +200,7 @@ public class NewClientController {
         }else{
             regexPassport.setVisible(true);
         }
-        if(!dropdown.getSelectionModel().isEmpty() || phoneRegex)
+        if((!dropdown.getSelectionModel().isEmpty()) && phoneRegex)
         {
             regexPhone.setVisible(false);
         }else{
@@ -229,6 +231,10 @@ public class NewClientController {
                 JavaMail.sendMail(c);
                 Failed.setVisible(false);
                 Succes.setVisible(true);
+                CompletableFuture.delayedExecutor(3, TimeUnit.SECONDS).execute(() -> {
+                    Failed.setVisible(false);
+                    Succes.setVisible(false);
+                });
                 clearInputs();
             }
             else{

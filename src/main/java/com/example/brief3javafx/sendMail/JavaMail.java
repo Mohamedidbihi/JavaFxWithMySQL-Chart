@@ -18,8 +18,8 @@ public static void sendMail(Client c) throws MessagingException {
     props.put("mail.smtp.auth", "true");
     props.put("mail.smtp.starttls.enable", "true");
 
-    final String myEmail = "mohamed98idbihi@gmail.com";
-    final String password = "ksghivkftiizteer";
+    final String myEmail = "***************************";
+    final String password = "*************";
 
    Session session = Session.getInstance(props,new Authenticator(){
        protected PasswordAuthentication getPasswordAuthentication(){
